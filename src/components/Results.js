@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ReactTable from "react-table";
 import Modal from "./Modal";
 import SkillList from "./SkillList";
@@ -131,6 +132,7 @@ const Results = props => {
   ];
   
     return (
+      <Router>
       <div className="matcher matcher--results">
         <p className="results__list-info">See a <a className="results__list-link" href="#" onClick={toggleModal}>full list of your skills</a> to use for your resumé or other career activities.</p>
         <Modal show={skillsModal} onClose={toggleModal} customWidth={750}>
@@ -165,6 +167,7 @@ const Results = props => {
           filterable={true}
           />
       </div>
+      </Router>
     );
   };
 

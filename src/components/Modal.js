@@ -13,7 +13,7 @@ export default class Modal extends Component {
       }
       return (
         <div className="custom-modal" id="modal">
-          <div className="window" style={{ maxWidth: this.props.customWidth && this.props.customWidth }}>
+          <div className="window"role="dialog" aria-modal="true" style={{ maxWidth: this.props.customWidth && this.props.customWidth }}>
             <div class="modal-close" onClick={this.props.onClose}>X</div>
               {this.props.children}
           </div>

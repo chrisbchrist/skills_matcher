@@ -1,10 +1,18 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    './src/index.js',
+    './module.css'
+  ],
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'dnnfree_spa_react_bundle.js'
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname),
+    watchContentBase: true,
+    publicPath: "/bundle/"
   },
   module: {
     rules: [
@@ -17,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [ 'css-loader' ]
+        use: [ 'style-loader', 'css-loader' ]
       },
       {
         test: /\.(png|jpg|gif)$/,

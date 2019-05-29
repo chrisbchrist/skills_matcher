@@ -1,13 +1,9 @@
-# DnnFree.Modules.SPA.React
-
-DNN (DotNetNuke) SPA Module using React & Webpack for fast development
-
-This Module is made using DNN 9.2.
+Custom React implementation of [CareerOneStop's Skills Matcher](https://www.careeronestop.org/Toolkit/Skills/skills-matcher.aspx) built using their API as a DNN SPA module.  
 
 ## Getting started
 
-Firstly create a Folder 'DnnFree' under DesktopModules, 
-then Clone/Download current repository and place it inside DnnFree Folder
+Firstly create a Folder under DesktopModules, 
+then Clone/Download current repository and place it inside the Folder
 
 Open Powershell/Bash and run :
 

@@ -1,5 +1,5 @@
 {
-  "name": "dnnfree.modules.spa.react",
+  "name": "cspbc.modules.spa.skills",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,7 +15,7 @@
     "spa",
     "react"
   ],
-  "author": "DnnFree.com (erw13n@gmail.com)",
+  "author": "Chris Blakely",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.4.5",

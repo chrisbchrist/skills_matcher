@@ -2,7 +2,7 @@
 using DotNetNuke.Web.Api;
 using System.Web.Http;
 
-namespace DnnFree.Modules.SPA.React.Services
+namespace CSPBC.Modules.SPA.Skills.Services
 {
 
     /// <summary>
@@ -17,11 +17,11 @@ namespace DnnFree.Modules.SPA.React.Services
         public void RegisterRoutes(IMapRoute mapRouteManager)
         {
             mapRouteManager.MapHttpRoute(
-                moduleFolderName: "DnnFree.Modules.SPA.React",
+                moduleFolderName: "CSPBC.Modules.SPA.Skills",
                 routeName: "default",
                 url: "{controller}/{itemId}",
                 defaults: new { itemId = RouteParameter.Optional },
-                namespaces: new[] { "DnnFree.Modules.SPA.React.Services" });
+                namespaces: new[] { "CSPBC.Modules.SPA.Skills.Services" });
         }
     }
 

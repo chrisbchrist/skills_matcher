@@ -15,12 +15,12 @@ using System.Collections.Generic;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Search;
 
-namespace DnnFree.Modules.SPA.React.Components
+namespace CSPBC.Modules.SPA.Skills.Components
 {
 
     /// -----------------------------------------------------------------------------
     /// <summary>
-    /// The Controller class for DnnFree.Modules.SPA.React
+    /// The Controller class for CSPBC.Modules.SPA.Skills
     /// 
     /// The FeatureController class is defined as the BusinessController in the manifest file (.dnn)
     /// DotNetNuke will poll this class to find out which Interfaces the class implements. 
@@ -53,18 +53,18 @@ namespace DnnFree.Modules.SPA.React.Components
         //{
         //string strXML = "";
 
-        //List<DnnFree.Modules.SPA.ReactInfo> colDnnFree.Modules.SPA.Reacts = GetDnnFree.Modules.SPA.Reacts(ModuleID);
-        //if (colDnnFree.Modules.SPA.Reacts.Count != 0)
+        //List<CSPBC.Modules.SPA.SkillsInfo> colCSPBC.Modules.SPA.Skillss = GetCSPBC.Modules.SPA.Skillss(ModuleID);
+        //if (colCSPBC.Modules.SPA.Skillss.Count != 0)
         //{
-        //    strXML += "<DnnFree.Modules.SPA.Reacts>";
+        //    strXML += "<CSPBC.Modules.SPA.Skillss>";
 
-        //    foreach (DnnFree.Modules.SPA.ReactInfo objDnnFree.Modules.SPA.React in colDnnFree.Modules.SPA.Reacts)
+        //    foreach (CSPBC.Modules.SPA.SkillsInfo objCSPBC.Modules.SPA.Skills in colCSPBC.Modules.SPA.Skillss)
         //    {
-        //        strXML += "<DnnFree.Modules.SPA.React>";
-        //        strXML += "<content>" + DotNetNuke.Common.Utilities.XmlUtils.XMLEncode(objDnnFree.Modules.SPA.React.Content) + "</content>";
-        //        strXML += "</DnnFree.Modules.SPA.React>";
+        //        strXML += "<CSPBC.Modules.SPA.Skills>";
+        //        strXML += "<content>" + DotNetNuke.Common.Utilities.XmlUtils.XMLEncode(objCSPBC.Modules.SPA.Skills.Content) + "</content>";
+        //        strXML += "</CSPBC.Modules.SPA.Skills>";
         //    }
-        //    strXML += "</DnnFree.Modules.SPA.Reacts>";
+        //    strXML += "</CSPBC.Modules.SPA.Skillss>";
         //}
 
         //return strXML;
@@ -83,14 +83,14 @@ namespace DnnFree.Modules.SPA.React.Components
         /// -----------------------------------------------------------------------------
         //public void ImportModule(int ModuleID, string Content, string Version, int UserID)
         //{
-        //XmlNode xmlDnnFree.Modules.SPA.Reacts = DotNetNuke.Common.Globals.GetContent(Content, "DnnFree.Modules.SPA.Reacts");
-        //foreach (XmlNode xmlDnnFree.Modules.SPA.React in xmlDnnFree.Modules.SPA.Reacts.SelectNodes("DnnFree.Modules.SPA.React"))
+        //XmlNode xmlCSPBC.Modules.SPA.Skillss = DotNetNuke.Common.Globals.GetContent(Content, "CSPBC.Modules.SPA.Skillss");
+        //foreach (XmlNode xmlCSPBC.Modules.SPA.Skills in xmlCSPBC.Modules.SPA.Skillss.SelectNodes("CSPBC.Modules.SPA.Skills"))
         //{
-        //    DnnFree.Modules.SPA.ReactInfo objDnnFree.Modules.SPA.React = new DnnFree.Modules.SPA.ReactInfo();
-        //    objDnnFree.Modules.SPA.React.ModuleId = ModuleID;
-        //    objDnnFree.Modules.SPA.React.Content = xmlDnnFree.Modules.SPA.React.SelectSingleNode("content").InnerText;
-        //    objDnnFree.Modules.SPA.React.CreatedByUser = UserID;
-        //    AddDnnFree.Modules.SPA.React(objDnnFree.Modules.SPA.React);
+        //    CSPBC.Modules.SPA.SkillsInfo objCSPBC.Modules.SPA.Skills = new CSPBC.Modules.SPA.SkillsInfo();
+        //    objCSPBC.Modules.SPA.Skills.ModuleId = ModuleID;
+        //    objCSPBC.Modules.SPA.Skills.Content = xmlCSPBC.Modules.SPA.Skills.SelectSingleNode("content").InnerText;
+        //    objCSPBC.Modules.SPA.Skills.CreatedByUser = UserID;
+        //    AddCSPBC.Modules.SPA.Skills(objCSPBC.Modules.SPA.Skills);
         //}
 
         //	throw new System.NotImplementedException("The method or operation is not implemented.");
@@ -106,11 +106,11 @@ namespace DnnFree.Modules.SPA.React.Components
         //{
         //SearchItemInfoCollection SearchItemCollection = new SearchItemInfoCollection();
 
-        //List<DnnFree.Modules.SPA.ReactInfo> colDnnFree.Modules.SPA.Reacts = GetDnnFree.Modules.SPA.Reacts(ModInfo.ModuleID);
+        //List<CSPBC.Modules.SPA.SkillsInfo> colCSPBC.Modules.SPA.Skillss = GetCSPBC.Modules.SPA.Skillss(ModInfo.ModuleID);
 
-        //foreach (DnnFree.Modules.SPA.ReactInfo objDnnFree.Modules.SPA.React in colDnnFree.Modules.SPA.Reacts)
+        //foreach (CSPBC.Modules.SPA.SkillsInfo objCSPBC.Modules.SPA.Skills in colCSPBC.Modules.SPA.Skillss)
         //{
-        //    SearchItemInfo SearchItem = new SearchItemInfo(ModInfo.ModuleTitle, objDnnFree.Modules.SPA.React.Content, objDnnFree.Modules.SPA.React.CreatedByUser, objDnnFree.Modules.SPA.React.CreatedDate, ModInfo.ModuleID, objDnnFree.Modules.SPA.React.ItemId.ToString(), objDnnFree.Modules.SPA.React.Content, "ItemId=" + objDnnFree.Modules.SPA.React.ItemId.ToString());
+        //    SearchItemInfo SearchItem = new SearchItemInfo(ModInfo.ModuleTitle, objCSPBC.Modules.SPA.Skills.Content, objCSPBC.Modules.SPA.Skills.CreatedByUser, objCSPBC.Modules.SPA.Skills.CreatedDate, ModInfo.ModuleID, objCSPBC.Modules.SPA.Skills.ItemId.ToString(), objCSPBC.Modules.SPA.Skills.Content, "ItemId=" + objCSPBC.Modules.SPA.Skills.ItemId.ToString());
         //    SearchItemCollection.Add(SearchItem);
         //}
 

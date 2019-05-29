@@ -1,14 +1,14 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="DnnFree.Modules.SPA.React" type="Module" version="00.00.01">
-      <friendlyName>DnnFree.Modules.SPA.React</friendlyName>
-      <description>DnnFree.com Modules SPA React</description>
+    <package name="CSPBC.Modules.SPA.Skills" type="Module" version="00.00.01">
+      <friendlyName>CSPBC.Modules.SPA.Skills</friendlyName>
+      <description>ReactJS version of CareerOneStop's Skills Matcher</description>
       <iconFile>~/Images/icon_extensions_32px.png</iconFile>
       <owner>
-        <name>DnnFree.com</name>
-        <organization>DnnFree.com</organization>
-        <url>http://www.dnnfree.com/</url>
-        <email>erw13n@gmail.com</email>
+        <name>Chris Blakely</name>
+        <organization>CareerSource Palm Beach County</organization>
+        <url>https://www.virtualcareersystem.com/</url>
+        <email>cblakely@careersourcepbc.com</email>
       </owner>
       <license src="License.txt"></license>
       <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
@@ -20,7 +20,7 @@
       <components>
         <component type="Script">
           <scripts>
-            <basePath>DesktopModules\DnnFree\DnnFree.Modules.SPA.React</basePath>
+            <basePath>DesktopModules\CSPBC\CSPBC.Modules.SPA.Skills</basePath>
             <script type="Install">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>00.00.01.SqlDataProvider</name>
@@ -36,7 +36,7 @@
 
         <component type="ResourceFile">
           <resourceFiles>
-            <basePath>DesktopModules/DnnFree/DnnFree.Modules.SPA.React</basePath>
+            <basePath>DesktopModules/CSPBC\CSPBC.Modules.SPA.Skills</basePath>
             <resourceFile>
               <name>Resources.zip</name>
             </resourceFile>
@@ -45,18 +45,18 @@
 
         <component type="Module">
           <desktopModule>
-            <moduleName>DnnFree.Modules.SPA.React</moduleName>
-            <foldername>DnnFree/DnnFree.Modules.SPA.React</foldername>
-            <businessControllerClass>DnnFree.Modules.SPA.React.Components.FeatureController</businessControllerClass>
+            <moduleName>CSPBC.Modules.SPA.Skills</moduleName>
+            <foldername>CSPBC\CSPBC.Modules.SPA.Skills</foldername>
+            <businessControllerClass>CSPBC.Modules.SPA.Skills.Components.FeatureController</businessControllerClass>
             <supportedFeatures />
             <moduleDefinitions>
               <moduleDefinition>
-                <friendlyName>DnnFree.Modules.SPA.React</friendlyName>
+                <friendlyName>CSPBC.Modules.SPA.Skills</friendlyName>
                 <defaultCacheTime>0</defaultCacheTime>
                 <moduleControls>
                   <moduleControl>
                     <controlKey />
-                    <controlSrc>DesktopModules/DnnFree/DnnFree.Modules.SPA.React/View.html</controlSrc>
+                    <controlSrc>DesktopModules/CSPBC/CSPBC.Modules.SPA.Skills/View.html</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle />
                     <controlType>View</controlType>
@@ -72,7 +72,7 @@
         <component type="Assembly">
           <assemblies>
             <assembly>
-              <name>DnnFree.Modules.SPA.React.dll</name>
+              <name>CSPBC.Modules.SPA.Skills.dll</name>
               <path>bin</path>
             </assembly>
           </assemblies>

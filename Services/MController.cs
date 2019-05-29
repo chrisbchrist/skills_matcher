@@ -2,9 +2,9 @@
 using DotNetNuke.Web.Api;
 using DotNetNuke.Security;
 
-namespace DnnFree.Modules.SPA.React.Services
+namespace CSPBC.Modules.SPA.Skills.Services
 {
-    [SupportedModules("DnnFree.Modules.SPA.React")]
+    [SupportedModules("CSPBC.Modules.SPA.Skills")]
     [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
 
     public class MController : DnnApiController

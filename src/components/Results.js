@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ReactTable from "react-table";
 import Modal from "./Modal";
 import SkillList from "./SkillList";
@@ -132,9 +132,11 @@ const Results = props => {
   ];
   
     return (
-      <Router>
-      <div className="matcher matcher--results">
-        <p className="results__list-info">See a <a className="results__list-link" href="#" onClick={toggleModal}>full list of your skills</a> to use for your resumé or other career activities.</p>
+      
+        <Switch>
+        <Route exact={true} path="/">
+        <div className="matcher matcher--results">
+        <p className="results__list-info">See a <Link to={"/skills"}>full list of your skills</Link> to use for your resumé or other career activities.</p>
         <Modal show={skillsModal} onClose={toggleModal} customWidth={750}>
           <SkillList skills={props.skills}/>
         </Modal>
@@ -164,10 +166,14 @@ const Results = props => {
           minRows={0}
           minWidth={300}
           className="-striped -highlight results__table"
-          filterable={true}
           />
-      </div>
-      </Router>
+          </div>
+          </Route>
+          <Route path="/skills" render={() => (
+            <SkillList skills={props.skills}/>
+          )}/>
+      </Switch>
+     
     );
   };
 

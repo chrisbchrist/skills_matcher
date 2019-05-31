@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
 import Progress from "../components/Progress";
 import HeaderRow from "../components/HeaderRow";
 import Question from "../components/Question";
@@ -88,6 +89,7 @@ const App = () => {
 
   if (!complete) {
     return (
+      <Router>
       <div className="matcher">
         <div className="matcher__instructions">
           <p>Select your skill level.</p>
@@ -127,9 +129,12 @@ const App = () => {
           reset={reset}
         />
       </div>
+      </Router>
     );
   } else {
-    return <Results skills={skills} />;
+    return (<Router>
+            <Results skills={skills} />
+            </Router>);
   }
 };
 

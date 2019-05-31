@@ -259,6 +259,18 @@ html, body {
     background: #ddd;
     color: white;
   }
+
+  .controls__btn--back {
+    display: block;
+    margin-left: 40px;
+    margin-top: 20px;
+    width: 55px;
+    text-align: center;
+  }
+
+  .controls__btn--back:hover {
+    text-decoration: none;
+  }
   
   .results__table {
     font-family: Raleway, Arial;
@@ -305,12 +317,18 @@ html, body {
   @media screen and (max-width: 650px) {
     .rt-tr {
       flex-direction: column;
-  }
+    }
     .results__table-head {
       width: 100% !important;
       max-width: 100% !important;
       border-bottom: 1px solid rgba(0,0,0,0.05);
     }
+
+    .rt-resizer {
+      width: 18px !important;
+      right: 0 !important;
+    }
+
     .rt-td {
       width: 100% !important;
       justify-content: center;
@@ -329,8 +347,16 @@ html, body {
     }
     
     .mobile__label {
-      display: block;
+      display: inline;
+      padding-right: 15px;
       text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .mobile__label {
+      display: block;
+      padding: 0;
     }
   }
   
@@ -472,6 +498,15 @@ html, body {
     color: #6a737b;
     padding: 15px 0;
   }
+
+  .skill-list {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .skill-list__back-wrapper {
+    padding: 15px 15px 15px 40px;
+  }
   
   .skill-list__title {
     font-family: ProximaNova, Raleway;
@@ -485,7 +520,7 @@ html, body {
     padding-left: 40px;
   }
   
-  .skill-list {
+  .skill-list__list {
     font-family: Raleway, Arial;
     color: #6a737b;
   }

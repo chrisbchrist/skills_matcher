@@ -15,7 +15,7 @@ const Controls = props => {
               ? "controls__btn controls__btn--blue"
               : "controls__btn controls__btn--disabled"
           }
-          onClick={props.page > 1 && props.prevPage}
+          onClick={props.page > 1 ? props.prevPage : undefined}
           onKeyPress={(e) => {if (e.which === 13) props.prevPage()}}
         >
           <i className="fas fa-chevron-left" /> Previous

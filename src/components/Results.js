@@ -35,26 +35,6 @@ const Results = props => {
       });
   }, []);
 
-  //Attach event listeners on component mount to scroll to top when table page is changed, return cleanup function for unmounting
-  // React.useEffect(() => {
-
-  //   function scrollToTop() {
-  //     window.scrollTo(0, 0);
-  //   }
-
-  //   const tableButtons = document.getElementsByClassName("-btn");
-  //   for (let i = 0; i < tableButtons.length; i++) {
-  //     tableButtons[i].addEventListener("click", scrollToTop);
-  //   }
-
-  //   return () => {
-  //     for (let i = 0; i < tableButtons.length; i++) {
-  //       tableButtons[i].removeEventListener("click", scrollToTop);
-  //     }
-  //   }
-
-  // }, []);
-
   function toggleModal() {
     setSkillsModal(!skillsModal);
   }

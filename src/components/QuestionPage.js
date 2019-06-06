@@ -1,0 +1,34 @@
+import React from "react";
+import Question from "./Question";
+import AnswerGroup from "./AnswerGroup";
+
+const QuestionPage = props => {
+  return (
+    <div className="matcher__questions">
+      {props.pageNum < props.skills.length / props.pageSize + 1 &&
+        props.skills
+          .slice(
+            (props.pageNum - 1) * props.pageSize,
+            props.pageSize * props.pageNum
+          )
+          .map(function(skill, index) {
+            //Index in relation to the total number of questions
+            const trueIndex = skill.TrueIndex;
+            return (
+              <div className="matcher__row" key={"question" + trueIndex}>
+                <Question skill={skill} index={trueIndex} />
+                <AnswerGroup
+                  val={skill.DataValue}
+                  skill={skill}
+                  index={trueIndex}
+                  key={"answers" + trueIndex}
+                  updateAnswer={props.updateAnswer}
+                />
+              </div>
+            );
+          })}
+    </div>
+  );
+};
+
+export default QuestionPage;

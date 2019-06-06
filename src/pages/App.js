@@ -1,9 +1,8 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Progress from "../components/Progress";
 import HeaderRow from "../components/HeaderRow";
-import Question from "../components/Question";
-import AnswerGroup from "../components/AnswerGroup";
+import QuestionPage from "../components/QuestionPage";
 import Controls from "../components/Controls";
 import Results from "../components/Results";
 
@@ -24,7 +23,7 @@ const App = () => {
       .then(response => {
         console.log(response);
         const skillsWithAnswers = response.Skills.map((skill, index) => {
-          // Add a property to store the user response so I don't have to correlate questions/answers as 2 collections, and save the index in relation to the total number of skills to prevent calculating it later, as subsections of the skills array will be rendered to provide pagination.
+          // Add a property to store the user response so I don't have to correlate questions/answers as 2 collections, and save the index in relation to the total number of skills to prevent calculating it later.
           return { ...skill, DataValue: "0", TrueIndex: index };
         });
         setSkills(skillsWithAnswers);
@@ -34,12 +33,11 @@ const App = () => {
         }
       });
   }
-  
+
   //Effect hook with empty listener array fetches skill data only on component mount
   React.useEffect(() => {
     fetchData();
   }, []);
-
 
   //Scroll to top on page change
   React.useEffect(() => window.scrollTo(0, 0), [pageNum]);
@@ -67,7 +65,7 @@ const App = () => {
       pageNum < Math.ceil(skills.length / pageSize) &&
       allQuestionsAnswered()
     ) {
-      setPageNum(pageNum + 1);
+      setPageNum(currentPage => currentPage + 1);
     } else {
       alert("Please select an answer for each question.");
     }
@@ -75,14 +73,15 @@ const App = () => {
 
   function prevPage() {
     if (pageNum > 1) {
-      setPageNum(pageNum - 1);
+      setPageNum(currentPage => currentPage - 1);
     }
   }
 
   function showResults() {
     setComplete(true);
   }
-  
+
+  //Added for semantics
   function reset() {
     fetchData();
   }
@@ -90,51 +89,42 @@ const App = () => {
   if (!complete) {
     return (
       <Router>
-      <div className="matcher">
-        <div className="matcher__instructions">
-          <p>Select your skill level.</p>
+        <div className="matcher">
+          <div className="matcher__instructions">
+            <p>Select your skill level.</p>
 
-           <p>Use the examples to help choose your levels. Think about whether you have done the example activity, or something like it in your own field.</p>
+            <p>
+              Use the examples to help choose your levels. Think about whether
+              you have done the example activity, or something like it in your
+              own field.
+            </p>
+          </div>
+          <Progress page={pageNum} total={skills.length / pageSize} />
+          <HeaderRow />
+          <QuestionPage
+            skills={skills}
+            pageNum={pageNum}
+            pageSize={pageSize}
+            updateAnswer={updateAnswer}
+          />
+          <Controls
+            page={pageNum}
+            pageSize={pageSize}
+            totalQuestions={skills.length}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            showResults={showResults}
+            reset={reset}
+          />
         </div>
-        <Progress page={pageNum} total={skills.length / pageSize}/>
-        <HeaderRow />
-        <div className="matcher__questions">
-        {pageNum < skills.length / pageSize + 1 &&
-          skills
-            .slice((pageNum - 1) * pageSize, pageSize * pageNum)
-            .map(function(skill, index) {
-              //Index in relation to the total number of questions
-              const trueIndex = index + (pageNum - 1) * pageSize;
-              return (
-                <div className="matcher__row" key={"question" + trueIndex}>
-                  <Question skill={skill} index={trueIndex} />
-                  <AnswerGroup
-                    val={skill.DataValue}
-                    skill={skill}
-                    index={trueIndex}
-                    key={"answers" + trueIndex}
-                    updateAnswer={updateAnswer}
-                  />
-                </div>
-              );
-            })}
-        </div>
-        <Controls
-          page={pageNum}
-          pageSize={pageSize}
-          totalQuestions={skills.length}
-          nextPage={nextPage}
-          prevPage={prevPage}
-          showResults={showResults}
-          reset={reset}
-        />
-      </div>
       </Router>
     );
   } else {
-    return (<Router>
-            <Results skills={skills} />
-            </Router>);
+    return (
+      <Router>
+        <Results skills={skills} />
+      </Router>
+    );
   }
 };
 

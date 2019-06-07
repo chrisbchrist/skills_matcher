@@ -17,7 +17,7 @@ const SkillList = (props) => {
         <Link to="/" className="controls__btn controls__btn--blue controls__btn--back">Back</Link>
         <h2 className="skill-list__title">Your Skills</h2>
         {skillLevels.reverse().map((level, index) => (
-          <div className="skill-list__section">
+          <div key={"skills" + level} className="skill-list__section">
             <h3 className="skill-list__level">{level}</h3>
             <ul className="skill-list__list">
               {skillsByLevel(skillLevels.length - index)}

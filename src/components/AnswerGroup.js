@@ -25,6 +25,7 @@ let MemoAnswerGroup = props => {
               data-level={1}
             />
             <div className="answers__custom-radio" />
+            <span className="answers__label--mobile">Beginner</span>
             <span className="answers__label">{props.skill.AnchorFirst}</span>
           </label>
         </div>
@@ -39,6 +40,7 @@ let MemoAnswerGroup = props => {
               data-level={2}
             />
             <div className="answers__custom-radio" />
+            <span className="answers__label--mobile">Basic</span>
           </label>
         </div>
         <div className="matcher__col matcher__col--lg">
@@ -52,6 +54,7 @@ let MemoAnswerGroup = props => {
               data-level={3}
             />
             <div className="answers__custom-radio" />
+            <span className="answers__label--mobile">Skilled</span>
             <span className="answers__label">{props.skill.AnchorThrid}</span>
           </label>
         </div>
@@ -66,6 +69,7 @@ let MemoAnswerGroup = props => {
               data-level={4}
             />
             <div className="answers__custom-radio" />
+            <span className="answers__label--mobile">Advanced</span>
           </label>
         </div>
         <div className="matcher__col matcher__col--lg">
@@ -79,6 +83,7 @@ let MemoAnswerGroup = props => {
               data-level={5}
             />
             <div className="answers__custom-radio" />
+            <span className="answers__label--mobile">Expert</span>
             <span className="answers__label">{props.skill.AnchorLast}</span>
           </label>
         </div>

@@ -1,31 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import SkillListTab from "./SkillListTab";
 
-const SkillList = (props) => {
-    
-    function skillsByLevel(level) {
-      const filteredSkills = props.skills.filter((skill) => skill.AnswerLevel == level);
-      return filteredSkills.map((skill, index) => (
-        <li key={"skill-" + skill.AnswerLevel + index} className="skill-list__item"><span className="skill-list__name">{skill.ElementName}</span> - {skill.EasyReadDescription}</li>
-      ))
-    }
-    
-    const skillLevels = ["Beginner", "Basic", "Skilled", "Advanced", "Expert"];
-    
+const SkillList = props => {
+  const skillLevels = ["Beginner", "Basic", "Skilled", "Advanced", "Expert"];
+  const [selectedLevel, setLevel] = useState(5);
+
+  function skillsByLevel(level) {
+    const filteredSkills = props.skills.filter(
+      skill => skill.AnswerLevel == level
+    );
     return (
-      <div className="skill-list">
-        <Link to="/" className="controls__btn controls__btn--blue controls__btn--back">Back</Link>
-        <h2 className="skill-list__title">Your Skills</h2>
-        {skillLevels.reverse().map((level, index) => (
-          <div key={"skills" + level} className="skill-list__section">
-            <h3 className="skill-list__level">{level}</h3>
-            <ul className="skill-list__list">
-              {skillsByLevel(skillLevels.length - index)}
-            </ul>
-          </div>
+      <ul className="skill-list__list">
+        {filteredSkills.map((skill, index) => (
+          <li
+            key={"skill-" + skill.AnswerLevel + index}
+            className="skill-list__item"
+          >
+            <span className="skill-list__name">{skill.ElementName}</span>
+            {skill.EasyReadDescription}
+          </li>
         ))}
-      </div>
-    )
+      </ul>
+    );
   }
 
-  export default SkillList;
+  return (
+    <div className="skill-list">
+      <div className="matcher__instructions">
+        <h2 className="matcher__section-header">Your Skills</h2>
+        <div className="matcher__accent" />
+        <p>
+          Click on the skill level to see which skills you rated at each level
+          of aptitude.
+        </p>
+      </div>
+      <div className="skill-list__menu">
+        {skillLevels.reverse().map((level, index) => (
+          <SkillListTab key={"level" + index}
+                        level={level}
+                        value={skillLevels.length - index}
+                        selectedLevel={selectedLevel}
+                        setLevel={setLevel}
+                        />
+        ))}
+      </div>
+      <div className="matcher__border matcher__border--skills">
+        <div className="skill-list__content">
+          {skillsByLevel(selectedLevel)}
+        </div>
+      </div>
+      {/* <Link to="/" className="controls__btn controls__btn--blue controls__btn--back">Back</Link> */}
+    </div>
+  );
+};
+
+export default SkillList;

@@ -5,7 +5,7 @@ const HeaderRow = () => {
       <div className="matcher__legend">
         <div
           className="matcher__col matcher__col--33"
-          style={{ paddingLeft: 40 }}
+          style={{ paddingLeft: 55 }}
         >
           <span className="matcher__legend-label">Skill</span>
         </div>

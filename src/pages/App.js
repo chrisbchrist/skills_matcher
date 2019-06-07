@@ -1,7 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Progress from "../components/Progress";
-import HeaderRow from "../components/HeaderRow";
 import QuestionPage from "../components/QuestionPage";
 import Controls from "../components/Controls";
 import Results from "../components/Results";
@@ -91,16 +90,11 @@ const App = () => {
       <Router>
         <div className="matcher">
           <div className="matcher__instructions">
-            <p>Select your skill level.</p>
-
-            <p>
-              Use the examples to help choose your levels. Think about whether
-              you have done the example activity, or something like it in your
-              own field.
-            </p>
+            <h2 className="matcher__section-header">Assessment</h2>
+            <div className="matcher__accent"></div>
+            <p>Select your skill level based on your experience with each of the following activities.</p>
           </div>
           <Progress page={pageNum} total={skills.length / pageSize} />
-          <HeaderRow />
           <QuestionPage
             skills={skills}
             pageNum={pageNum}
@@ -122,7 +116,9 @@ const App = () => {
   } else {
     return (
       <Router>
-        <Results skills={skills} />
+        <div className="matcher">
+          <Results skills={skills} />
+        </div> 
       </Router>
     );
   }

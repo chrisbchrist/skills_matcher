@@ -31,49 +31,18 @@ html, body {
   .matcher__instructions {
     padding: 15px 0;
     font-family: Raleway, Arial;
-    color: #6a737b;
-    text-align: center;
-  }
-
-  .matcher__section-header {
-    font-family: ProximaNova, Raleway;
-    color: #0d76bd;
-  }
-
-  .matcher__accent {
-    width: 120px;
-    height: 3px;
-    background: #faa634;
-    margin: 20px auto;
-  }
-
-  .progress__container {
-    padding: 0 15px;
-  }
-
-  .progress__label {
-    display: block;
-    color: #6a737b;
-    font-size: 1.25rem;
-    margin-bottom: .5rem;
-    font-family: ProximaNova, Raleway;
+    color: #6a737b
   }
   
   .progress__wrapper {
     width: 100%;
-    margin: auto;
+    height: 10px;
     background: #ddd;
-    height: 30px;
-    position: relative;
-    border-radius: 3px;
-    overflow: hidden;
-    margin-bottom: 45px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   }
   
   .progress__bar {
-    height: 30px;
-    background: #faa634;
+    height: 10px;
+    background: #a0cf67;
     width: 0;
     transition: all 1s ease-in-out;
   }
@@ -106,18 +75,13 @@ html, body {
     display: flex;
     color: #fff;
     font-family: Raleway, ProximaNova;
-    /* background: #0d76bd; */
+    background: #0d76bd;
   /*   border-top-right-radius: 3px;
     border-top-left-radius: 3px; */
     padding: 5px 0;
   }
 
   @media screen and (max-width: 768px) {
-
-    .matcher {
-      padding: 0;
-    }
-    
     .matcher__legend {
       display: none;
     }
@@ -160,38 +124,11 @@ html, body {
     font-weight: bold;
     display: block;
   }
-
-  .counter__wrapper {
-    display: flex;
-    justify-content: center;
-    color: #6a737b;
-    font-family: Arial;
-    padding: 5px 0;
-    font-size: 14px;
-  }
   
-  .matcher__border {
-    /* border-right: 1px solid #ddd;
-    border-left: 1px solid #ddd; */
-    position: relative;
-    padding: 0 20px 20px;
-    background-image: url("https://www.virtualcareersystem.com/Portals/0/Images/skills_matcher/gradient.svg");
-    background-size: cover;
-  }
-
-  .matcher__border--skills {
-    padding: 20px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .matcher__border {
-      padding: 15px;
-    }
-  }
-
   .matcher__questions {
-    border-radius: 4px;
-    overflow: hidden;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    position: relative;
   }
   
   .matcher__row {
@@ -199,22 +136,15 @@ html, body {
     font-family: Raleway, Arial;
     padding: 15px 0;
     border-bottom: 1px solid #ddd;
-    background: #fff;
   }
-
-  .matcher__row:nth-of-type(even) {
-    background: #ddd;
-    border-top: 1px solid #6a737b;
-    border-bottom: 1px solid #6a737b;
-  }
-
-  .matcher__row:last-of-type {
-    border-bottom: none;
+  
+  .matcher__row:first-of-type .question {
+    padding-top: 25px;
   }
   
   .question {
     width: 33.33%;
-    padding-left: 55px;
+    padding-left: 40px;
     padding-right: 10px;
   }
   
@@ -223,23 +153,15 @@ html, body {
     font-family: ProximaNova, Raleway;
     font-weight: bold;
     margin-top: 0;
-    color: #0d76bd;
-    font-size: 18px;
   }
   
   .question__number {
     color: #0d76bd;
     font-weight: bold;
+    padding-right: 10px;
     position: absolute;
-    font-size: 16px;
-    transform: translateX(-45px);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #faa634;
+    font-size: 18px;
+    transform: translateX(-100%)
   }
   
   .question__text {
@@ -270,7 +192,6 @@ html, body {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    border: 1px solid #bbb;
     background: #eee;
     margin-bottom: 10px;
   /*   border: 1px solid #999; */
@@ -293,10 +214,6 @@ html, body {
     .matcher__row {
       flex-direction: column;
       padding: 0 0 20px 0;
-    }
-
-    .matcher__row:nth-of-type(even) {
-      background: #fff;
     }
 
     .question {
@@ -336,7 +253,6 @@ html, body {
   /*   border: 1px solid #0d76bd; */
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3), 2px 2px 5px rgba(0,0,0,0.3);
     animation: select .6s 1;
-    border: 1px solid transparent;
   }
   
   @keyframes select {
@@ -394,7 +310,14 @@ html, body {
   .controls {
     display: flex;
     justify-content: space-between;
-    padding: 15px 0;
+    padding: 15px;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-color: #ddd;
+    background: #fafafa;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
     
   }
   
@@ -407,12 +330,12 @@ html, body {
   }
   
   .controls__btn--blue {
-    background: #0d76bd;
+    background: #16a0db;
     color: white;
   }
   
   .controls__btn--blue:hover {
-    background: #16a0db;
+    background: #0d76bd;
   }
   
   .controls__btn--green {
@@ -424,12 +347,12 @@ html, body {
     background: #54b948;
   }
   
-  .controls__btn--orange {
+  .controls__btn--results {
     background: #faa634;
     color: white;
   }
   
-  .controls__btn--orange:hover {
+  .controls__btn--results:hover {
     background: #f26122;
   }
   
@@ -686,36 +609,6 @@ html, body {
     margin: auto;
   }
 
-  .skill-list__menu {
-    display: flex;
-    justify-content: center;
-  }
-
-  .skill-list__tab {
-    background: #0d76bd;
-    padding: 15px;
-    color: white;
-    font-family: ProximaNova, Raleway;
-    font-size: 18px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: flex-end;
-    cursor: pointer;
-    margin: 0 10px;
-  }
-
-  .skill-list__tab--selected {
-    align-self: stretch;
-  }
-
-  .skill-list__icon {
-    width: 40px;
-    margin-right: 10px;
-  }
-
   .skill-list__back-wrapper {
     padding: 15px 15px 15px 40px;
   }
@@ -725,13 +618,12 @@ html, body {
     color: #0d76bd;
     text-align: center;
   }
-
-  .skill-list__content {
-    padding: 15px;
-    border-radius: 4px;
-    background: #fff;
-  }
   
+  .skill-list__level {
+    font-family: ProximaNova, Raleway;
+    color: #002b54;
+    padding-left: 40px;
+  }
   
   .skill-list__list {
     font-family: Raleway, Arial;
@@ -744,6 +636,5 @@ html, body {
   
   .skill-list__name {
     font-weight: bold;
-    color: #0d76bd;
-    display: block;
+    color: #333;
   }

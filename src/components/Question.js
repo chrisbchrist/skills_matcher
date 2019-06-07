@@ -5,7 +5,7 @@ let MemoQuestion = props => {
     return (
       <div className="question">
         <p className="question__area">
-          <span className="question__number">{props.index + 1}. </span>
+          <span className="question__number">{props.index + 1} </span>
           {props.skill.ElementName}
         </p>
         <p className="question__text">{props.skill.Question}</p>

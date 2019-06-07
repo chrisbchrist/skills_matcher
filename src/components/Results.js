@@ -145,7 +145,7 @@ const Results = props => {
   return (
     <Switch>
       <Route exact={true} path="/">
-        <div className="matcher matcher--results">
+        <div className="matcher--results">
           <p className="results__list-info">
             See a <Link to={"/skills"}>full list of your skills</Link> to use
             for your resumé or other career activities.
@@ -194,8 +194,4 @@ const Results = props => {
   );
 };
 
-<<<<<<< HEAD
 export default Results;
-=======
-export default Results;
->>>>>>> e28fe1d373be7cb58f759172306c1b0f40a49063

@@ -23,7 +23,7 @@ const Controls = props => {
         <div
             role="button"
             tabIndex="0"
-            className="controls__btn controls__btn--green"
+            className="controls__btn controls__btn--orange"
             onClick={props.reset}
             onKeyPress={(e) => {if (e.which === 13) props.reset()}}
           >
@@ -44,7 +44,7 @@ const Controls = props => {
           <div
             role="button"
             tabIndex="0"
-            className="controls__btn controls__btn--results"
+            className="controls__btn controls__btn--blue"
             onClick={props.showResults}
             onKeyPress={(e) => {if (e.which === 13) props.showResults()}}
           >

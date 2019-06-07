@@ -194,4 +194,8 @@ const Results = props => {
   );
 };
 
+<<<<<<< HEAD
 export default Results;
+=======
+export default Results;
+>>>>>>> e28fe1d373be7cb58f759172306c1b0f40a49063

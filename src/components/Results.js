@@ -6,6 +6,7 @@ import PageCounter from "./PageCounter";
 import Button from "./Button";
 import PrintButton from "./PrintButton";
 import Loader from "./Loader";
+import CosLogo from "./CosLogo";
 
 const Results = props => {
   const [jobs, setJobs] = React.useState([]);
@@ -13,7 +14,7 @@ const Results = props => {
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
-  }
+  };
 
   //POST answers and store results on mount
   React.useEffect(() => {
@@ -109,7 +110,11 @@ const Results = props => {
           <span>{value}</span>
         </div>
       ),
-      style: { whiteSpace: "unset", justifyContent: "center", textAlign: "center" },
+      style: {
+        whiteSpace: "unset",
+        justifyContent: "center",
+        textAlign: "center"
+      },
       sortMethod: (a, b) => {
         const eduOrder = [
           "Doctoral or professional degree",
@@ -157,57 +162,80 @@ const Results = props => {
         <div className="matcher--results">
           <div className="matcher__instructions">
             <h2 className="matcher__section-header">Your Results</h2>
-            <div className="matcher__accent"></div>
+            <div className="matcher__accent" />
             <p className="results__list-info">
-             Sort your results by selecting the title of each column. Click on the job title to view more information.
+              Sort your results by selecting the title of each column. Click on
+              the job title to view more information.
             </p>
 
-            <p>You can also see your full list of skills to use for your resumé or other career activities.</p>
-              <Link className="skill-list__link controls__btn controls__btn--blue" to={"/skills"}>View</Link>
+            <p>
+              You can also see your full list of skills to use for your resumé
+              or other career activities.
+            </p>
+            <Link
+              className="skill-list__link controls__btn controls__btn--blue"
+              to={"/skills"}
+            >
+              View
+            </Link>
           </div>
           <div className="matcher__utilities matcher__utilities--hide">
-            <PrintButton/>
+            <PrintButton />
           </div>
           <div className="matcher__border">
             {/* <Loader loading={jobs.length < 1}/> */}
-          <ReactTable
-            noDataText="Loading Results..."
-            getTdProps={(state, rowInfo, column, instance) => {
-              return {
-                style: {
-                  padding: 10,
-                  display: "flex",
-                  alignItems: "center"
-                }
-              };
-            }}
-            getTheadThProps={(state, rowInfo, column, instance) => {
-              return {
-                style: {
-                  padding: "15px 10px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center"
-                }
-              };
-            }}
-            onPageChange={page => {
-              //Scroll to top on new results page
-              scrollToTop();
-            }}
-            columns={columns}
-            data={jobs}
-            minRows={0}
-            minWidth={300}
-            nextText={<span>Next <i className="fas fa-chevron-right"/></span>}
-            previousText={<span><i className="fas fa-chevron-left"/> Previous</span>}
-            resizable={false}
-            className="-striped -highlight results__table"
-          />
+            <ReactTable
+              noDataText="Loading Results..."
+              getTdProps={(state, rowInfo, column, instance) => {
+                return {
+                  style: {
+                    padding: 10,
+                    display: "flex",
+                    alignItems: "center"
+                  }
+                };
+              }}
+              getTheadThProps={(state, rowInfo, column, instance) => {
+                return {
+                  style: {
+                    padding: "15px 10px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }
+                };
+              }}
+              onPageChange={page => {
+                //Scroll to top on new results page
+                scrollToTop();
+              }}
+              columns={columns}
+              data={jobs}
+              minRows={0}
+              minWidth={300}
+              nextText={
+                <span>
+                  Next <i className="fas fa-chevron-right" />
+                </span>
+              }
+              previousText={
+                <span>
+                  <i className="fas fa-chevron-left" /> Previous
+                </span>
+              }
+              resizable={false}
+              className="-striped -highlight results__table"
+            />
           </div>
           <div className="controls controls--center">
-            <Button text="Reset" icon={<i className="fas fa-redo-alt"/>} color={"orange"} function={props.reset}/>
+            <Button
+              text="Reset"
+              icon={<i className="fas fa-redo-alt" />}
+              color={"orange"}
+              function={props.reset}
+            />
           </div>
+          <CosLogo />
         </div>
       </Route>
       <Route

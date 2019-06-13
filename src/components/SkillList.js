@@ -50,7 +50,10 @@ const SkillList = props => {
           {skillsByLevel(selectedLevel)}
         </div>
       </div>
-      {/* <Link to="/" className="controls__btn controls__btn--blue controls__btn--back">Back</Link> */}
+      <div className="controls">
+        <Link to="/" className="controls__btn controls__btn--blue"><i className="fas fa-chevron-left"/> Back</Link>
+      </div>
+      
     </div>
   );
 };

@@ -98,14 +98,23 @@
     <Content Include="BuildScripts\MSBuild.Community.Tasks.Targets">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="index.html" />
+    <Content Include="module.css" />
     <Content Include="src\components\AnswerGroup.js" />
+    <Content Include="src\components\Button.js" />
     <Content Include="src\components\Controls.js" />
+    <Content Include="src\components\Disclaimer.js" />
     <Content Include="src\components\HeaderRow.js" />
+    <Content Include="src\components\Loader.js" />
     <Content Include="src\components\Modal.js" />
+    <Content Include="src\components\PageCounter.js" />
+    <Content Include="src\components\PrintButton.js" />
     <Content Include="src\components\Progress.js" />
     <Content Include="src\components\Question.js" />
+    <Content Include="src\components\QuestionPage.js" />
     <Content Include="src\components\Results.js" />
     <Content Include="src\components\SkillList.js" />
+    <Content Include="src\components\SkillListTab.js" />
     <Content Include="src\index.js" />
     <Content Include="src\pages\App.js" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.01.SqlDataProvider" />

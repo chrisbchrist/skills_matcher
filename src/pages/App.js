@@ -1,15 +1,26 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Progress from "../components/Progress";
 import QuestionPage from "../components/QuestionPage";
 import Controls from "../components/Controls";
 import Results from "../components/Results";
+import CosLogo from "../components/CosLogo";
 
 const App = () => {
+  const scrollRef = useRef(null);
   const [skills, setSkills] = React.useState([]);
   const [pageNum, setPageNum] = React.useState(1);
   const [pageSize, setPageSize] = React.useState(10);
   const [complete, setComplete] = React.useState(false);
+
+  const scrollToTop = (ref) =>  {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const top = rect.top + scrollTop;
+      window.scrollTo(0, top);
+    }
+  };
 
   function fetchData() {
     fetch("https://api.careeronestop.org/v1/skillsmatcher/eKVo73aZJi6gYRw", {
@@ -29,17 +40,22 @@ const App = () => {
         // Reset page number as this will also be the reset function
         if (pageNum > 1) {
           setPageNum(1);
+          setComplete(false);
         }
       });
   }
 
   //Effect hook with empty listener array fetches skill data only on component mount
-  React.useEffect(() => {
+  useEffect(() => {
     fetchData();
   }, []);
 
+
+
   //Scroll to top on page change
-  React.useEffect(() => window.scrollTo(0, 0), [pageNum]);
+  //React.useEffect(() => window.scrollTo(0, 0), [pageNum]);
+
+  useEffect(() => scrollToTop(scrollRef), [pageNum]);
 
   function updateAnswer(answer, index, level) {
     //Deep copy array to prevent direct state mutation
@@ -87,8 +103,8 @@ const App = () => {
 
   if (!complete) {
     return (
-      <Router>
-        <div className="matcher">
+      <Router basename="/Find-Training/Skills-Matcher">
+        <div className="matcher" ref={scrollRef}>
           <div className="matcher__instructions">
             <h2 className="matcher__section-header">Assessment</h2>
             <div className="matcher__accent"></div>
@@ -110,14 +126,17 @@ const App = () => {
             showResults={showResults}
             reset={reset}
           />
+          <CosLogo/>
         </div>
       </Router>
     );
   } else {
     return (
       <Router>
-        <div className="matcher">
-          <Results skills={skills} />
+        <div className="matcher" ref={scrollRef}>
+          <Results skills={skills} 
+                   reset={fetchData}
+                   scrollToTop={scrollToTop}/>
         </div> 
       </Router>
     );

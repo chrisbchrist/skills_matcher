@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ReactTable from "react-table";
-import Modal from "./Modal";
 import SkillList from "./SkillList";
+import PageCounter from "./PageCounter";
+import Button from "./Button";
+import PrintButton from "./PrintButton";
+import Loader from "./Loader";
 
 const Results = props => {
   const [jobs, setJobs] = React.useState([]);
-  const [pageSize, setPageSize] = React.useState(10);
-  const [pageNum, setPageNum] = React.useState(1);
-  const [skillsModal, setSkillsModal] = React.useState(false);
+  // const [skillsModal, setSkillsModal] = React.useState(false);
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  }
 
   //POST answers and store results on mount
   React.useEffect(() => {
+    scrollToTop();
     let answerObj = {
       SKAValueList: props.skills.map(skill => ({
         ElementId: skill.ElementId,
@@ -35,9 +41,10 @@ const Results = props => {
       });
   }, []);
 
-  function toggleModal() {
-    setSkillsModal(!skillsModal);
-  }
+  // Not using modals for now
+  // const toggleModal = () => {
+  //   setSkillsModal(skillsModal => !skillsModal);
+  // }
 
   const columns = [
     {
@@ -72,6 +79,7 @@ const Results = props => {
       Header: "Annual Wages",
       accessor: "AnnualWages",
       headerStyle: { whiteSpace: "unset" },
+      style: { justifyContent: "center", textAlign: "center" },
       headerClassName: "results__table-head",
       Cell: ({ value }) =>
         value > 0 ? (
@@ -101,7 +109,7 @@ const Results = props => {
           <span>{value}</span>
         </div>
       ),
-      style: { whiteSpace: "unset" },
+      style: { whiteSpace: "unset", justifyContent: "center", textAlign: "center" },
       sortMethod: (a, b) => {
         const eduOrder = [
           "Doctoral or professional degree",
@@ -119,6 +127,7 @@ const Results = props => {
       Header: "Outlook",
       accessor: "Outlook",
       headerStyle: { whiteSpace: "unset" },
+      style: { justifyContent: "center", textAlign: "center" },
       headerClassName: "results__table-head",
       //maxWidth: 150,
       Cell: ({ value }) => {
@@ -146,15 +155,23 @@ const Results = props => {
     <Switch>
       <Route exact={true} path="/">
         <div className="matcher--results">
-          <p className="results__list-info">
-            See a <Link to={"/skills"}>full list of your skills</Link> to use
-            for your resumé or other career activities.
-          </p>
-          <Modal show={skillsModal} onClose={toggleModal} customWidth={750}>
-            <SkillList skills={props.skills} />
-          </Modal>
+          <div className="matcher__instructions">
+            <h2 className="matcher__section-header">Your Results</h2>
+            <div className="matcher__accent"></div>
+            <p className="results__list-info">
+             Sort your results by selecting the title of each column. Click on the job title to view more information.
+            </p>
+
+            <p>You can also see your full list of skills to use for your resumé or other career activities.</p>
+              <Link className="skill-list__link controls__btn controls__btn--blue" to={"/skills"}>View</Link>
+          </div>
+          <div className="matcher__utilities matcher__utilities--hide">
+            <PrintButton/>
+          </div>
+          <div className="matcher__border">
+            {/* <Loader loading={jobs.length < 1}/> */}
           <ReactTable
-            loading={jobs.length < 1}
+            noDataText="Loading Results..."
             getTdProps={(state, rowInfo, column, instance) => {
               return {
                 style: {
@@ -176,14 +193,21 @@ const Results = props => {
             }}
             onPageChange={page => {
               //Scroll to top on new results page
-              window.scrollTo(0, 0);
+              scrollToTop();
             }}
             columns={columns}
             data={jobs}
             minRows={0}
             minWidth={300}
+            nextText={<span>Next <i className="fas fa-chevron-right"/></span>}
+            previousText={<span><i className="fas fa-chevron-left"/> Previous</span>}
+            resizable={false}
             className="-striped -highlight results__table"
           />
+          </div>
+          <div className="controls controls--center">
+            <Button text="Reset" icon={<i className="fas fa-redo-alt"/>} color={"orange"} function={props.reset}/>
+          </div>
         </div>
       </Route>
       <Route

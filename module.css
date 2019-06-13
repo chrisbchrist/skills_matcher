@@ -35,9 +35,36 @@ html, body {
     text-align: center;
   }
 
+  .matcher__instructions p {
+    margin: 0;
+  }
+
+  @media print {
+    .matcher__instructions {
+      display: none;
+    }
+
+    .matcher__utilities {
+      display: none;
+    }
+
+    .controls {
+      display: none;
+    }
+
+    .-pagination {
+      display: none !important;
+    }
+
+    .ReactTable {
+      font-size: 14px;
+    }
+  }
+
   .matcher__section-header {
     font-family: ProximaNova, Raleway;
     color: #0d76bd;
+    font-size: 
   }
 
   .matcher__accent {
@@ -83,7 +110,9 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 200px;
+    height: 100%;
+    z-index: 10;
+    min-height: 200px;
     background: rgba(255,255,255,0.5);
     display: flex;
     justify-content: center;
@@ -93,6 +122,7 @@ html, body {
   .loader__text {
     background: rgba(255,255,255,0.7);
     box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    border: 1px solid #eee;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,10 +207,14 @@ html, body {
     padding: 0 20px 20px;
     background-image: url("https://www.virtualcareersystem.com/Portals/0/Images/skills_matcher/gradient.svg");
     background-size: cover;
+    border-radius: 4px;
   }
 
   .matcher__border--skills {
     padding: 20px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+
   }
 
   @media screen and (max-width: 768px) {
@@ -203,7 +237,7 @@ html, body {
   }
 
   .matcher__row:nth-of-type(even) {
-    background: #ddd;
+    background: #eee;
     border-top: 1px solid #6a737b;
     border-bottom: 1px solid #6a737b;
   }
@@ -380,8 +414,9 @@ html, body {
     }
   }
   
-  .answers__radio > input:checked + .answers__custom-radio + .answers__label {
-    font-weight: bold;
+  .answers__radio > input:checked + .answers__custom-radio + .answers__label--mobile + .answers__label {
+    /* font-weight: bold; */
+    color: #333;
   }
   
   .sr-only {
@@ -397,6 +432,10 @@ html, body {
     padding: 15px 0;
     
   }
+
+  .controls--center {
+    justify-content: center;
+  }
   
   .controls__btn {
     font-family: Raleway, ProximaNova;
@@ -404,6 +443,8 @@ html, body {
     border-radius: 3px;
     cursor: pointer;
     transition: all .4s;
+    border: none;
+    font-size: 16px;
   }
   
   .controls__btn--blue {
@@ -440,9 +481,8 @@ html, body {
 
   .controls__btn--back {
     display: block;
-    margin-left: 40px;
-    margin-top: 20px;
-    width: 55px;
+    color: white !important;
+    width: 75px;
     text-align: center;
   }
 
@@ -454,20 +494,29 @@ html, body {
     font-family: Raleway, Arial;
     color: #6a737b;
   }
+
   
   @media screen and (max-width: 768px) {
     .results__table {
       font-size: 14px;
     }
   }
+
+  .ReactTable {
+    border: none !important;
+  }
   
   .results__table-head {
-    background: #0d76bd;
+    /* background: #0d76bd; */
     color: #fff;
     font-family: ProximaNova, Raleway;
     font-weight: bold;
     min-width: 58px;
   /*   padding: 10px !important; */
+  }
+
+  .rt-th {
+    border-right: none !important;
   }
   
   .ReactTable .rt-thead .rt-th.-sort-asc {
@@ -476,6 +525,24 @@ html, body {
   
   .ReactTable .rt-thead .rt-th.-sort-desc {
     box-shadow: inset 0 -3px 0 0 rgba(255,255,255,0.6) !important;
+  }
+
+  .rt-tbody {
+    background: #fff;
+  }
+
+  .rt-tr.-odd {
+    background: #fff !important;
+  }
+
+  .rt-tr.-even {
+    background: #eee;
+    border-top: 1px solid #6a737b;
+    border-bottom: 1px solid #6a737b;
+  }
+
+  .rt-tr-group:last-child {
+    border-bottom: none;
   }
 
   .rt-thead, .rt-tbody {
@@ -544,22 +611,14 @@ html, body {
   
   .ReactTable .-pagination {
     padding: 15px !important;
-  }
-  
-  .results__row:nth-of-type(even) {
-    background: #ddd;
-  }
-  
-  .results__row td {
-    padding: 10px;
+    background: #fff;
   }
   
   .results__rank {
-    background: #fff;
     color: #0d76bd;
     width: 35px;
     height: 35px;
-    border: 1px solid #16a0db;
+    border: 1px solid #faa634;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -603,13 +662,15 @@ html, body {
   }
   
   .ReactTable .-pagination .-btn {
-    background: #16a0db !important;
+    background: #0d76bd !important;
     color: #fff !important;
     transition: all .3s;
+    width: 100px !important;
+    margin: auto;
   }
   
   .ReactTable .-pagination .-btn:not([disabled]):hover {
-    background: #0d76bd !important;
+    background: #16a0db !important;
   }
   
   /* Custom modal styles */
@@ -679,11 +740,20 @@ html, body {
     font-family: Raleway, Arial;
     color: #6a737b;
     padding: 15px 0;
+    margin: 0;
   }
 
   .skill-list {
     max-width: 1200px;
     margin: auto;
+  }
+
+  .skill-list__link {
+    display: block;
+    margin: 15px auto 0 auto;
+    width: 100px;
+    text-decoration: none;
+    color: white !important;
   }
 
   .skill-list__menu {
@@ -693,18 +763,30 @@ html, body {
 
   .skill-list__tab {
     background: #0d76bd;
-    padding: 15px;
+    padding: 10px 15px;
     color: white;
     font-family: ProximaNova, Raleway;
     font-size: 18px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     display: flex;
+    flex: 1;
     justify-content: center;
     align-items: center;
     align-self: flex-end;
     cursor: pointer;
     margin: 0 10px;
+    transition: all .4s;
+  }
+
+  .skill-list__tab:first-child {
+    margin-left: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .skill-list__tab:last-child {
+    margin-right: 0;
+    border-bottom-right-radius: 0;
   }
 
   .skill-list__tab--selected {
@@ -714,6 +796,26 @@ html, body {
   .skill-list__icon {
     width: 40px;
     margin-right: 10px;
+    display: none;
+  }
+
+  .skill-list__icon--show {
+    display: block;
+  }
+
+  @media screen and (max-width: 600px) {
+    .skill-list__tab {
+      margin: 0;
+      flex: 1;
+      flex-direction: column;
+      border-radius: 0;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .skill-list__icon {
+      margin-right: 0;
+
+    }
   }
 
   .skill-list__back-wrapper {
@@ -736,6 +838,8 @@ html, body {
   .skill-list__list {
     font-family: Raleway, Arial;
     color: #6a737b;
+    list-style: disc;
+    margin-left: 18px !important;
   }
   
   .skill-list__item {
@@ -746,4 +850,48 @@ html, body {
     font-weight: bold;
     color: #0d76bd;
     display: block;
+    font-family: ProximaNova, Raleway;
+  }
+
+  .matcher__utilities {
+    padding: 15px 0;
+  }
+
+  @media screen and (max-width: 480px) {
+    .matcher__utilities--hide {
+      display: none;
+    }
+  }
+
+  @media print {
+    .matcher__utilities {
+      display: none;
+    }
+  }
+
+  .btn--utility {
+    background: #ddd;
+    color: #6a737b;
+    border-radius: 4px;
+    border: none;
+    padding: 9px 10px;
+    cursor: pointer;
+    font-family: Raleway, Arial;
+    font-size: 16px;
+  }
+
+  .disclaimer {
+    font-size: 12px;
+    max-width: 700px;
+    border: 1px solid #eee;
+    padding: 8px;
+    text-align: center;
+    margin: auto;
+  }
+
+  .cos-logo__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 15px;
   }
